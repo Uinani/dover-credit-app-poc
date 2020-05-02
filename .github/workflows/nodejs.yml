@@ -20,6 +20,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+    
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -28,3 +29,16 @@ jobs:
     - run: yarn install
     - run: yarn build
     - run: yarn test
+
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: Azure Deploy to Storage
+      uses: azure/CLI@v1
+      with:
+        azcliversion: 2.0.72
+        inlineScript: |
+          az account show
+          az storage blob upload-batch -s ./build -d $web --account-name dovercreditapppocstatic --content-type 'text/html; charset=utf-8'
