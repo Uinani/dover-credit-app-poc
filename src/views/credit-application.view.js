@@ -1,13 +1,16 @@
+import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
-import React from 'react';
+import React, { useState } from 'react';
 import Row from 'react-bootstrap/Row';
+import Spinner from 'react-bootstrap/Spinner';
+import axios from 'axios';
 
 import Header from '../components/header.component';
 
-const formControls = {
+const userData = {
   firstName: null,
   lastName: null,
   addressLine1: null,
@@ -17,40 +20,81 @@ const formControls = {
   zipCode: null,
   employerName: null,
   yearsEmployed: null,
+  yearlySalary: null,
   email: null,
   creditCheckAgreement: null,
-}
+};
+
+const formData = {
+  alertVariant: '',
+  alertText: '',
+  showAlert: false,
+  showSpinner: false,
+};
+
+const url = '';
 
 export default class CreditApplication extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { formControls };
-
-    this.onCheckboxChange = this.onCheckboxChange.bind(this);
-    this.onTextChange = this.onTextChange.bind(this);
-    this.submitForm = this.submitForm.bind(this);
+    this.state = { 
+      formData,
+      userData,
+     };
   }
 
-  onCheckboxChange(event) {
+  onAlertClosed = (event) => {
+    console.log('Alert closed!');
+    formData.showAlert = false;
+    this.updateFormData();
+  }
+
+  onCheckboxChange = (event) => {
     const name = event.target.id;
     const value = event.target.checked;
-
-    formControls[name] = value;
-    
-    this.setState({ formControls }); 
+    this.updateUserData(name, value);
   }
-
-  onTextChange(event) {
+  
+  onTextChange = (event) => {
     const name = event.target.id;
     const value = event.target.value;
-    
-    formControls[name] = value;
-    
-    this.setState({ formControls }); 
+    this.updateUserData(name, value);
   }
 
-  submitForm(event) {
-    console.log(formControls);
+  submitForm = (event) => {
+    console.log(userData);
+    formData.showSpinner = true;
+    axios.post(url, userData)
+      .then(response => {
+        formData.alertVariant = 'primary';
+        formData.alertText = 'Your credit application was successfully submitted.';
+        formData.showAlert = true;
+      })
+      .catch(error => {
+        formData.alertVariant = 'warning';
+        formData.alertText = 'An error occurred while processing your credit application; please try again.';
+        formData.showAlert = true;
+      })
+      .finally(() => {
+        formData.showSpinner = false;
+        this.updateFormData();
+      });
+  }
+
+  updateFormData = () => {
+    this.setState({ 
+      formData,
+      userData, 
+    });
+  }
+
+  updateUserData = (name, value) => {
+    userData[name] = value;
+    
+    this.setState({ 
+      formData,
+      userData, 
+    });
   }
 
   render() {
@@ -117,6 +161,12 @@ export default class CreditApplication extends React.Component {
                 <Form.Control type="text" placeholder="How many years working" onChange={this.onTextChange}/>
               </Form.Group>
             </Col>
+            <Col>
+              <Form.Group controlId="yearlySalary">
+                <Form.Label>Yearly Salary</Form.Label>
+                <Form.Control type="text" placeholder="Estimated salary" onChange={this.onTextChange}/>
+              </Form.Group>
+            </Col>
           </Row>
 
           <Form.Group controlId="email">
@@ -138,10 +188,28 @@ export default class CreditApplication extends React.Component {
 
           <Button 
               variant="primary" 
-              disabled={!this.state.formControls.creditCheckAgreement}
-              onClick={this.submitForm}>
+              disabled={!this.state.userData.creditCheckAgreement}
+              onClick={this.submitForm}
+          >
             Submit
+            { this.state.formData.showSpinner ? ' '(
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            ) : null }
           </Button>
+
+          { this.state.formData.showAlert &&
+            <Alert variant={this.state.formData.alertVariant} onClose={this.onAlertClosed} dismissible>
+              <p>
+                {this.state.formData.alertText}
+              </p>
+            </Alert>
+          }
         </Form>
       </Container>
     );
