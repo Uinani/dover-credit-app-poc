@@ -70,3 +70,15 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## GitHub Actions
+
+### Generate Azure Credentials
+
+https://github.com/marketplace/actions/azure-login
+
+### Deploying to Azure Storage
+
+https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-sendgrid?tabs=csharp
+
+https://devkimchi.com/2019/12/13/publishing-static-website-to-azure-blob-storage-via-github-actions
