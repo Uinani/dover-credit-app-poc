@@ -32,8 +32,8 @@ const formData = {
   showSpinner: false,
 };
 
-// const url = 'https://dovercreditapppoc.azurewebsites.net/api/OnCreditApplicationPost';
-const url = ' http://localhost:7071/api/OnCreditApplicationPost';
+const url = 'https://dovercreditapppoc.azurewebsites.net/api/OnCreditApplicationPost';
+// const url = ' http://localhost:7071/api/OnCreditApplicationPost';
 
 export default class CreditApplication extends React.Component {
   constructor(props) {
