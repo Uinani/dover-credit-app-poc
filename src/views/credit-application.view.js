@@ -22,7 +22,7 @@ const userData = {
   yearsEmployed: null,
   yearlySalary: null,
   email: null,
-  creditCheckAgreement: null,
+  creditCheckAgreement: false,
 };
 
 const formData = {
@@ -32,7 +32,7 @@ const formData = {
   showSpinner: false,
 };
 
-const url = '';
+const url = 'https://dovercreditapppoc.azurewebsites.net/api/OnCreditApplicationPost';
 
 export default class CreditApplication extends React.Component {
   constructor(props) {
@@ -46,22 +46,38 @@ export default class CreditApplication extends React.Component {
   onAlertClosed = (event) => {
     console.log('Alert closed!');
     formData.showAlert = false;
-    this.updateFormData();
+    this._updateFormData();
   }
 
   onCheckboxChange = (event) => {
     const name = event.target.id;
     const value = event.target.checked;
-    this.updateUserData(name, value);
+    this._updateUserData(name, value);
   }
   
   onTextChange = (event) => {
     const name = event.target.id;
     const value = event.target.value;
-    this.updateUserData(name, value);
+    this._updateUserData(name, value);
   }
 
-  submitForm = (event) => {
+  _updateFormData = () => {
+    this.setState({ 
+      formData,
+      userData, 
+    });
+  }
+
+  _updateUserData = (name, value) => {
+    userData[name] = value;
+    
+    this.setState({ 
+      formData,
+      userData, 
+    });
+  }
+
+  onSubmit = (event) => {
     console.log(userData);
     formData.showSpinner = true;
     axios.post(url, userData)
@@ -77,24 +93,8 @@ export default class CreditApplication extends React.Component {
       })
       .finally(() => {
         formData.showSpinner = false;
-        this.updateFormData();
+        this._updateFormData();
       });
-  }
-
-  updateFormData = () => {
-    this.setState({ 
-      formData,
-      userData, 
-    });
-  }
-
-  updateUserData = (name, value) => {
-    userData[name] = value;
-    
-    this.setState({ 
-      formData,
-      userData, 
-    });
   }
 
   render() {
@@ -189,7 +189,7 @@ export default class CreditApplication extends React.Component {
           <Button 
               variant="primary" 
               disabled={!this.state.userData.creditCheckAgreement}
-              onClick={this.submitForm}
+              onClick={this.onSubmit}
           >
             Submit
             { this.state.formData.showSpinner ? ' '(
