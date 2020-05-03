@@ -46,6 +46,7 @@ export default class CreditApplication extends React.Component {
   onAlertClosed = (event) => {
     console.log('Alert closed!');
     formData.showAlert = false;
+    this._clearUserData();
     this._updateFormData();
   }
 
@@ -75,6 +76,21 @@ export default class CreditApplication extends React.Component {
       formData,
       userData, 
     });
+  }
+
+  _clearUserData = () => {
+    userData.firstName = null;
+    userData.lastName = null;
+    userData.addressLine1 = null;
+    userData.addressLine2 = null;
+    userData.city = null;
+    userData.state = null;
+    userData.zipCode = null;
+    userData.employerName = null;
+    userData.yearsEmployed = null;
+    userData.yearlySalary = null;
+    userData.email = null;
+    userData.creditCheckAgreement = false;
   }
 
   onSubmit = (event) => {
