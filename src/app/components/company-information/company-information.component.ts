@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-company-information',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./company-information.component.scss']
 })
 export class CompanyInformationComponent implements OnInit {
+
+  @Input()
+  formGroup: FormGroup;
 
   constructor() { }
 

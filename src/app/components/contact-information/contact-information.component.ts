@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-contact-information',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./contact-information.component.scss']
 })
 export class ContactInformationComponent implements OnInit {
+
+  @Input()
+  formGroup: FormGroup;
 
   constructor() { }
 

@@ -16,14 +16,18 @@
       <mat-vertical-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="formGroup.get('companyInformation')">
           <ng-template matStepLabel>Company Information</ng-template>
-          <app-company-information></app-company-information>
+          <app-company-information 
+            [formGroup]="formGroup.get('companyInformation')">
+          </app-company-information>
           <div>
             <button mat-button matStepperNext type="button">Next</button>
           </div>
         </mat-step>
         <mat-step [stepControl]="formGroup.get('contactInformation')">
           <ng-template matStepLabel>Contact Information</ng-template>
-          <app-contact-information></app-contact-information>
+          <app-contact-information
+            [formGroup]="formGroup.get('contactInformation')">
+          </app-contact-information>
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
             <button mat-button matStepperNext type="button">Next</button>
@@ -31,7 +35,9 @@
         </mat-step>
         <mat-step [stepControl]="formGroup.get('bankTradeInformation')">
           <ng-template matStepLabel>Bank and Trade Information</ng-template>
-          <app-bank-trade-information></app-bank-trade-information>
+          <app-bank-trade-information
+            [formGroup]="formGroup.get('bankTradeInformation')">
+          </app-bank-trade-information>
           <div>
             <button mat-button matStepperPrevious type="button">Back</button>
             <button mat-button matStepperNext type="button">Next</button>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-bank-trade-information',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bank-trade-information.component.scss']
 })
 export class BankTradeInformationComponent implements OnInit {
+
+  @Input()
+  formGroup: FormGroup;
 
   constructor() { }
 
