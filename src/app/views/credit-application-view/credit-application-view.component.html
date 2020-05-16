@@ -1,0 +1,51 @@
+<div class="credit-app">
+  <div class="credit-app-header">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <div fxFlex="25%">
+        <div class="logo-image">
+          <img src="../../../assets/logo-dover.png"/>
+        </div>
+      </div>
+      <div fxFlex="75%" fxFlexAlign="center">
+        <h1>Credit Application</h1>
+      </div>
+    </div>
+  </div>
+  <div class="credit-app-content">
+    <form [formGroup]="formGroup">
+      <mat-vertical-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="formGroup.get('companyInformation')">
+          <ng-template matStepLabel>Company Information</ng-template>
+          <app-company-information></app-company-information>
+          <div>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="formGroup.get('contactInformation')">
+          <ng-template matStepLabel>Contact Information</ng-template>
+          <app-contact-information></app-contact-information>
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        </mat-step>
+        <mat-step [stepControl]="formGroup.get('bankTradeInformation')">
+          <ng-template matStepLabel>Bank and Trade Information</ng-template>
+          <app-bank-trade-information></app-bank-trade-information>
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Done</ng-template>
+          <p>You are now done.</p>
+          <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+          </div>
+        </mat-step>
+      </mat-vertical-stepper>
+    </form>
+  </div>
+</div>
