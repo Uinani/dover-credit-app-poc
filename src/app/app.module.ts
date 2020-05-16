@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -26,6 +27,7 @@ import { CreditApplicationViewComponent } from './views/credit-application-view/
     BrowserModule,
     FlexLayoutModule,
     FormsModule,
+    HttpClientModule,
     MatStepperModule,
     ReactiveFormsModule,
   ],
