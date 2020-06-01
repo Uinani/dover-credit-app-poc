@@ -1,5 +1,17 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
+export const TaxTypes = [
+  { name: 'Taxable', value: 'taxable' },
+  { name: 'Tax Exempt', value: 'taxExempt' },
+];
+
+export const CompanyTypes = [
+  { name: 'Sole Proprietorship', value: 'soleProprietorship' },
+  { name: 'Corporation', value: 'corporation' },
+  { name: 'Partnership', value: 'partnership' },
+  { name: 'Other', value: 'other' },
+];
+
 const createAddressFormGroup = () => new FormGroup({
   addressLine1: new FormControl(),
   addressLine2: new FormControl(),
@@ -14,12 +26,8 @@ const createCompanyInformationFormGroup = () => new FormGroup({
   federalTaxId: new FormControl(),
   dunsNumber: new FormControl(),
   yearsInBusiness: new FormControl(),
-  taxable: new FormControl(),
-  taxExempt: new FormControl(),
-  soleProprietorship: new FormControl(),
-  corporation: new FormControl(),
-  partnership: new FormControl(),
-  other: new FormControl(),
+  taxation: new FormControl(),
+  companyType: new FormControl(),
   registeredAddress: createAddressFormGroup(),
   billingAddress: createAddressFormGroup(),
   shippingAddress: createAddressFormGroup(),

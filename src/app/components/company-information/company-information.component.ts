@@ -1,5 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { CompanyTypes, TaxTypes } from '../../common/credit-application.form';
+import { MatFormFieldConstants } from '../../common/material.constants';
 
 @Component({
   selector: 'app-company-information',
@@ -7,6 +9,10 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./company-information.component.scss']
 })
 export class CompanyInformationComponent implements OnInit {
+
+  CompanyTypes = CompanyTypes;
+  MatFormFieldConstants = MatFormFieldConstants;
+  TaxTypes = TaxTypes;
 
   @Input()
   formGroup: FormGroup;

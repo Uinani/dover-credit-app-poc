@@ -1,1 +1,78 @@
-<p>company-information works!</p>
+<div class="company-info" [formGroup]="formGroup">
+  <div fxLayout="column wrap" fxLayoutGap="1em">
+    <mat-card>
+      <div fxLayout="row" fxLayoutGap="1em">
+        <mat-form-field fxFlex="50%">
+          <mat-label>Company Name</mat-label>
+          <input matInput type="text" [formControl]="formGroup.get('companyName')">
+        </mat-form-field>
+        <mat-form-field fxFlex="50%">
+          <mat-label>DBA</mat-label>
+          <input matInput type="text" [formControl]="formGroup.get('dba')">
+        </mat-form-field>
+      </div>
+      <div fxLayout="row" fxLayoutGap="1em">
+        <mat-form-field fxFlex="33%">
+          <mat-label>Federal Tax ID</mat-label>
+          <input matInput type="text" [formControl]="formGroup.get('federalTaxId')">
+        </mat-form-field>
+        <mat-form-field fxFlex="33%">
+          <mat-label>DUNS No.</mat-label>
+          <input matInput type="text" [formControl]="formGroup.get('dunsNumber')">
+        </mat-form-field>
+        <mat-form-field fxFlex="33%">
+          <mat-label>Years in Business</mat-label>
+          <input matInput type="number" [formControl]="formGroup.get('yearsInBusiness')">
+        </mat-form-field>
+      </div>  
+    </mat-card>
+    <div fxLayout="row" fxLayoutGap="1em">
+      <mat-card fxFlex="33%">
+        <div fxLayout="column" fxLayoutGap="1em">
+          <mat-card-subtitle>Taxation</mat-card-subtitle>
+          <!-- <label class="radio-btn-label">Taxation</label> -->
+          <mat-radio-group formControlName="taxation">
+            <mat-radio-button 
+                class="radio-btn" 
+                *ngFor="let item of TaxTypes" 
+                [value]="item.value">
+              {{ item.name }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card>
+      <mat-card fxFlex="66%">
+        <div fxLayout="column" fxLayoutGap="1em">
+          <mat-card-subtitle>Company Type</mat-card-subtitle>
+          <!-- <label class="radio-btn-label">Company Type</label> -->
+          <mat-radio-group formControlName="companyType">
+            <mat-radio-button 
+                class="radio-btn" 
+                *ngFor="let item of CompanyTypes" 
+                [value]="item.value">
+              {{ item.name }}
+            </mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <mat-card-subtitle>Registered Address</mat-card-subtitle>
+        <app-address [formGroup]="formGroup.get('registeredAddress')"></app-address>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <mat-card-subtitle>Billing Address</mat-card-subtitle>
+        <app-address [formGroup]="formGroup.get('billingAddress')"></app-address>
+      </mat-card>
+    </div>
+    <div>
+      <mat-card>
+        <mat-card-subtitle>Shipping Address</mat-card-subtitle>
+        <app-address [formGroup]="formGroup.get('shippingAddress')"></app-address>
+      </mat-card>
+    </div>
+  </div>
+</div>
