@@ -1,7 +1,7 @@
 <div class="company-info" [formGroup]="formGroup">
   <div fxLayout="column wrap" fxLayoutGap="1em">
     <mat-card>
-      <div fxLayout="row" fxLayoutGap="1em">
+      <div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="1em">
         <mat-form-field fxFlex="50%">
           <mat-label>Company Name</mat-label>
           <input matInput type="text" [formControl]="formGroup.get('companyName')">
@@ -11,7 +11,7 @@
           <input matInput type="text" [formControl]="formGroup.get('dba')">
         </mat-form-field>
       </div>
-      <div fxLayout="row" fxLayoutGap="1em">
+      <div fxLayout="row" fxLayout.md="column" fxLayoutGap="1em">
         <mat-form-field fxFlex="33%">
           <mat-label>Federal Tax ID</mat-label>
           <input matInput type="text" [formControl]="formGroup.get('federalTaxId')">

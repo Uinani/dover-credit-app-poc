@@ -1,15 +1,15 @@
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export const TaxTypes = [
-  { name: 'Taxable', value: 'taxable' },
-  { name: 'Tax Exempt', value: 'taxExempt' },
+  { name: 'Taxable', value: 'TAXABLE' },
+  { name: 'Tax Exempt', value: 'TAXEXEMPT' },
 ];
 
 export const CompanyTypes = [
-  { name: 'Sole Proprietorship', value: 'soleProprietorship' },
-  { name: 'Corporation', value: 'corporation' },
-  { name: 'Partnership', value: 'partnership' },
-  { name: 'Other', value: 'other' },
+  { name: 'Sole Proprietorship', value: 'SOLEPROPRIETORSHIP' },
+  { name: 'Corporation', value: 'CORPORATION' },
+  { name: 'Partnership', value: 'PARTNERSHIP' },
+  { name: 'Other', value: 'OTHER' },
 ];
 
 const createAddressFormGroup = () => new FormGroup({
@@ -59,12 +59,11 @@ const createBankInformationFormGroup = () => new FormGroup({
 });
 
 const createTradeReferenceFormGroup = () => new FormGroup({
-  bankName: new FormControl(),
   companyName: new FormControl(),
-  companyAddress: new FormControl(),
-  contactPerson: new FormControl(),
-  contactPhone: new FormControl(),
-  contactEmail: new FormControl(),
+  companyPerson: new FormControl(),
+  companyPhone: new FormControl(),
+  companyEmail: new FormControl(),
+  companyAddress: createAddressFormGroup(),
 });
 
 const createBankTradeReferencesFormGroup = () => new FormGroup({
@@ -76,4 +75,5 @@ export const creditApplicationFormGroup = new FormGroup({
   companyInformation: createCompanyInformationFormGroup(),
   contactInformation: createContactInformationFormGroup(),
   bankTradeInformation: createBankTradeReferencesFormGroup(),
+  overrideEmail: new FormControl(),
 });

@@ -1,1 +1,12 @@
-<p>contact-information works!</p>
+<div class="contact-info" [formGroup]="formGroup">
+  <div fxLayout="column wrap" fxLayoutGap="1em">
+    <mat-card>
+      <mat-card-subtitle>Principal Owners/Officers</mat-card-subtitle>
+      <app-principal-owners [formGroup]="formGroup.get('principalOwnersOfficers')"></app-principal-owners>
+    </mat-card>
+    <mat-card>
+      <mat-card-subtitle>Accounts Payable Contact</mat-card-subtitle>
+      <app-accounts-payable-contact [formGroup]="formGroup.get('accountsPayableContact')"></app-accounts-payable-contact>
+    </mat-card>
+  </div>
+</div>

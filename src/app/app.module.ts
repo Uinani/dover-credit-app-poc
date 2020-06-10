@@ -6,6 +6,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS, MatFormFieldDefaultOptions } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
@@ -19,6 +20,10 @@ import { BankTradeInformationComponent } from './components/bank-trade-informati
 import { CompanyInformationComponent } from './components/company-information/company-information.component';
 import { ContactInformationComponent } from './components/contact-information/contact-information.component';
 import { CreditApplicationViewComponent } from './views/credit-application-view/credit-application-view.component';
+import { PrincipalOwnersComponent } from './components/contact-information/principal-owners/principal-owners.component';
+import { AccountsPayableContactComponent } from './components/contact-information/accounts-payable-contact/accounts-payable-contact.component';
+import { BankInformationComponent } from './components/bank-trade-information/bank-information/bank-information.component';
+import { TradeReferenceComponent } from './components/bank-trade-information/trade-reference/trade-reference.component';
 
 const appearance: MatFormFieldDefaultOptions = {
   appearance: 'outline'
@@ -32,6 +37,10 @@ const appearance: MatFormFieldDefaultOptions = {
     ContactInformationComponent,
     CreditApplicationViewComponent,
     AddressComponent,
+    PrincipalOwnersComponent,
+    AccountsPayableContactComponent,
+    BankInformationComponent,
+    TradeReferenceComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -42,6 +51,7 @@ const appearance: MatFormFieldDefaultOptions = {
     HttpClientModule,
     MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
