@@ -1,0 +1,24 @@
+<div class="bank-trade-info" [formGroup]="formGroup">
+  <div fxLayout="column" fxLayoutGap="1em">
+    <mat-form-field fxFlex="50%">
+      <mat-label>Company Name</mat-label>
+      <input matInput type="text" [formControl]="formGroup.get('companyName')">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <mat-label>Company Contact Person</mat-label>
+      <input matInput type="text" [formControl]="formGroup.get('companyPerson')">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <mat-label>Company Phone No.</mat-label>
+      <input matInput type="text" [formControl]="formGroup.get('companyPhone')">
+    </mat-form-field>
+    <mat-form-field fxFlex="50%">
+      <mat-label>Company Email</mat-label>
+      <input matInput type="text" [formControl]="formGroup.get('companyEmail')">
+    </mat-form-field>
+    <mat-card>
+      <mat-card-subtitle>Company Address</mat-card-subtitle>
+      <app-address [formGroup]="formGroup.get('companyAddress')"></app-address>
+    </mat-card>
+  </div>
+</div>

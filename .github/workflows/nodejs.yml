@@ -25,10 +25,10 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install -g yarn
-    - run: yarn install
-    - run: yarn build
-    - run: yarn test
+    - run: npm install -g @angular/cli@latest
+    - run: npm install
+    - run: ng build
+    - run: ng test
 
     - name: Azure Login
       uses: azure/login@v1
@@ -44,5 +44,5 @@ jobs:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
-          az storage blob upload-batch -s ./build -d \$web --account-name $AZURE_STORAGE_NAME
+          az storage blob upload-batch -s ./dist -d \$web --account-name $AZURE_STORAGE_NAME
           az storage account show -n $AZURE_STORAGE_NAME -g $AZURE_RESOURCE_GROUP --query "primaryEndpoints.web" --output tsv

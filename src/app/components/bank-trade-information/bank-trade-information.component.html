@@ -1,0 +1,12 @@
+<div class="bank-trade-info" [formGroup]="formGroup">
+  <div fxLayout="column wrap" fxLayoutGap="1em">
+    <mat-card>
+      <mat-card-subtitle>Bank Information</mat-card-subtitle>
+      <app-bank-information [formGroup]="formGroup.get('bankInformation')"></app-bank-information>
+    </mat-card>
+    <mat-card>
+      <mat-card-subtitle>Trade Reference</mat-card-subtitle>
+      <app-trade-reference [formGroup]="formGroup.get('tradeReference')"></app-trade-reference>      
+    </mat-card>
+  </div>
+</div>
