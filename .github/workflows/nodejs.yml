@@ -24,14 +24,13 @@ jobs:
 
     - run: sudo apt-get install xvfb
 
-    - name: Cache multiple paths
+    - name: Cache NPM
       uses: actions/cache@v2
       with:
-        path: |
-          ~/cache
-          !~/cache/exclude
-          **/node_modules
-        key: ${{ runner.os }}-${{ hashFiles('**/lockfiles') }}
+        path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
     
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
@@ -39,9 +38,10 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install -g @angular/cli@latest
     - run: npm install
-    - run: ng build --prod=true
+    - run: ng build
+    #- run: npm run build:ci
     #- run: ng test
-    - run: xvfb-run --auto-servernum npm test
+    #- run: xvfb-run --auto-servernum npm test
 
     - name: Azure Login
       uses: azure/login@v1
