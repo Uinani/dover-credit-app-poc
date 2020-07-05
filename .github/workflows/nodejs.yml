@@ -19,7 +19,10 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - run: sudo apt-get install xvfb
 
     - name: Cache multiple paths
       uses: actions/cache@v2
@@ -37,7 +40,8 @@ jobs:
     - run: npm install -g @angular/cli@latest
     - run: npm install
     - run: ng build --prod=true
-    - run: ng test
+    #- run: ng test
+    - run: xvfb-run --auto-servernum npm test
 
     - name: Azure Login
       uses: azure/login@v1
