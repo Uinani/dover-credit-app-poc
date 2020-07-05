@@ -22,7 +22,7 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
-    - run: sudo apt-get install xvfb
+    #- run: sudo apt-get install xvfb
 
     - name: Cache NPM
       uses: actions/cache@v2
