@@ -57,5 +57,6 @@ jobs:
         azcliversion: 2.0.72
         inlineScript: |
           az account show
-          az storage blob upload-batch -s ./dist -d \$web --account-name $AZURE_STORAGE_NAME
+          az storage blob delete-batch -s \$web --account-name $AZURE_STORAGE_NAME
+          az storage blob upload-batch -s ./dist/angular-app -d \$web --account-name $AZURE_STORAGE_NAME
           az storage account show -n $AZURE_STORAGE_NAME -g $AZURE_RESOURCE_GROUP --query "primaryEndpoints.web" --output tsv
