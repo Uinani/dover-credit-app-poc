@@ -1,5 +1,7 @@
 # dover-credit-app-poc
 
+![Node.js CI](https://github.com/Uinani/dover-credit-app-poc/workflows/Node.js%20CI/badge.svg?event=push)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
 ## Development server
