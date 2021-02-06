@@ -1,6 +1,13 @@
 # dover-credit-app-poc
 
 ![Node.js CI](https://github.com/Uinani/dover-credit-app-poc/workflows/Node.js%20CI/badge.svg?event=push)
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
+## Deprecated
+
+This repo has been archived. It's original use is no longer valid.
+
+## About
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.6.
 
